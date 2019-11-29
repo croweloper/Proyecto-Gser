@@ -34,10 +34,12 @@ begin
 INSERT INTO `gser_db`.`usuario` (`usu_nom`, `usu_ape`, `usu_mail`,  `usu_tdoc`, `usu_ndoc`, `usu_movil`, `usu_pass`,`usu_fecreg`) 
 VALUES ( usunom, usuape, mail,tipodoc, doc, usumovil, pass,now());
 
+select * from usuario where usu_ndoc=doc;
+
 end&&
 delimiter ;
 
-call sp_RegistrarUsuario( 'Deivi', 'Herrera', 'obesotelees456',1, '72696054', '931702058', '123456')
+call sp_RegistrarUsuario( 'Deivi', 'Herrera', 'obesotelees456',1, '42424362', '931702058', '123456')
 
 
 
