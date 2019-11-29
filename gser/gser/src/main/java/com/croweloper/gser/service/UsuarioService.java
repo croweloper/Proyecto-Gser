@@ -128,4 +128,33 @@ public class UsuarioService implements IUsuarioService {
 		return usuaridto;
 	}
 
+	@Override
+	public Usuario registroUsuario(String nomusu, String apeusu, String mail, int tipodoc, String doc,String usumovil, String pass) {
+		UsuarioDTO usuaridto = new UsuarioDTO();
+		Usuario usu=new Usuario();
+		
+		List<Object[]> lista =   usuarioDAO.registrarUsuario(nomusu, apeusu, mail, tipodoc, doc,usumovil, pass);
+		
+		for (Object[] obj : lista) {
+			usuaridto = new UsuarioDTO();
+			usu=new Usuario();
+			usuaridto.setUsu_cod(Long.valueOf(obj[0].toString()));
+			usu=listarId(usuaridto.getUsu_cod());
+			
+		}
+		
+		
+		/*
+		if(usuaridto.getUsu_cod()!=null) {
+			usuaridto.setRpta(true);
+			usuaridto.setMensaje("Autenticación Exitosa");			
+		}else {
+			usuaridto.setRpta(false);
+			usuaridto.setMensaje("Autenticación Fallida");	
+		}*/
+				
+		
+		return usu;
+	}
+
 }

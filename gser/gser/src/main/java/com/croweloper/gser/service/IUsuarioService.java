@@ -21,5 +21,8 @@ public interface IUsuarioService {
 	UsuarioDTO usuarioListar(Long id);
 	
 	UsuarioDTO usuarioLogin(String usuario,String pass);
-
+	
+	Usuario registroUsuario(String nomusu,String apeusu,String mail,int tipodoc,String doc,String usumovil,String pass);
+	
+	
 }

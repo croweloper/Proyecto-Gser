@@ -15,6 +15,9 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Long> {
 	@Query(value = "call sp_listarUsuario(?)", nativeQuery = true)
 	List<Object[]> listarUsuario(Long id);
 	
+	@Query(value = "call sp_RegistrarUsuario(?,?,?,?,?,?,?)", nativeQuery = true)
+	List<Object[]> registrarUsuario(String nomusu,String apeusu,String mail,int tipodoc,String doc,String usumovil,String pass);
+	
 	
 
 }

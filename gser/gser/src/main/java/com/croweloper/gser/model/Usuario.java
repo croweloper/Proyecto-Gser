@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
@@ -27,25 +30,30 @@ public class Usuario {
 	private String usu_nom;
 
 	@Size(min = 2, message = "Los apellidos deben de tener mínimo 2 caracteres")
-	@Column(name = "usu_ape", nullable = false, length = 100)
+	@Column(name = "usu_ape", nullable = true, length = 100)
 	private String usu_ape;
 
 	@Size(min = 8, message = "El correo debe tener mínimo 8 caracteres")
 	@Column(name = "usu_mail", nullable = false, length = 50)
 	private String usu_mail;
 	
-	@Column(name = "usu_fecnac", nullable = false, length = 50)
+	
+	//@JsonSerialize(using = LocalDateTimeSerializer.class)
+	//@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonSerialize(using = ToStringSerializer.class)
+	@Column(name = "usu_fecnac", nullable = true, length = 50)
 	private LocalDate usu_fecnac;
 
 	@Column(name = "usu_tdoc", nullable = false)
 	private int usu_tdoc;
 
-	@Size(min = 9, message = "Los nuumero de  deben de tener mínimo 9 caracteres")
+	@Size(min = 8, message = "Los nuumero de  deben de tener mínimo 9 caracteres")
 	@Column(name = "usu_ndoc", nullable = false, length = 11)
 	private String usu_ndoc;
 
-	@Size(min = 7, message = "Los telefonos deben de tener mínimo 7 caracteres")
-	@Column(name = "usu_tel", nullable = false, length = 7)
+	//@Size(min = 7, message = "Los telefonos deben de tener mínimo 7 caracteres")
+	@Column(name = "usu_tel", nullable = true, length = 7)
 	private String usu_tel;
 
 	@Size(min = 9, message = "Los telefonos moviles deben de tener mínimo 9 caracteres")
@@ -56,24 +64,25 @@ public class Usuario {
 	@Column(name = "usu_pass", nullable = false, length = 50)
 	private String usu_pass;
 
-	@Column(name = "usu_foto", nullable = false, length = 50)
+	@Column(name = "usu_foto", nullable = true, length = 50)
 	private String usu_foto;
 		
-	@Column(name = "usu_verificacion", nullable = false)
+	@Column(name = "usu_verificacion", nullable = true)
 	private int usu_verificacion;
-	
+		
 	@JsonSerialize(using = ToStringSerializer.class)
-	@Column(name="usu_fecreg", nullable=false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name="usu_fecreg", nullable=true)
 	private LocalDateTime usu_fecreg;
 	
 	@JsonSerialize(using = ToStringSerializer.class)
-	@Column(name = "usu_fecmod", nullable = false)
+	@Column(name = "usu_fecmod", nullable = true)
 	private LocalDateTime usu_fecmod;
 	
-	@Column(name = "usu_estado", nullable = false)
+	@Column(name = "usu_estado", nullable = true)
 	private int usu_estado;
 
-	@Column(name = "usu_perfil", nullable = false)
+	@Column(name = "usu_perfil", nullable = true)
 	private int usu_perfil;
 
 	public Long getUsu_cod() {
