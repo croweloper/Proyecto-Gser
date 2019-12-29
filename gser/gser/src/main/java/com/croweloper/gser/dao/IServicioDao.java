@@ -24,8 +24,8 @@ public interface IServicioDao extends JpaRepository<Servicio, Long> {
 	@Query(value = "call sp_ListarServicios(?)", nativeQuery = true)
 	List<Object[]> listarServicios();
 	
-	@Query(value = "call sp_RegistrarServicio(?,?,?,?,?,?,?,?,?)", nativeQuery = true)
-	List<Object[]> registrarServicio(Long codusu ,int catsercod ,String incluye ,String noincluye ,String servadicionales ,double preciominimo ,String foto ,String etiquetas);
+	@Query(value = "call sp_RegistrarServicio(?,?,?,?,?,?,?,?,?,?)", nativeQuery = true)
+	List<Object[]> registrarServicio(Long codusu ,int catsercod ,String titulo,String incluye ,String noincluye ,String servadicionales ,double preciominimo ,String foto ,String etiquetas);
 	
 	 
 

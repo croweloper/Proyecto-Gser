@@ -30,6 +30,9 @@ public class Servicio {
 	@Column(name = "ser_catsercod")
 	private Long ser_catsercod;
 	
+	@Column(name = "ser_titulo")
+	private String ser_titulo;
+	
 	@Column(name = "ser_incluye")
 	private String ser_incluye;
 	
@@ -63,6 +66,30 @@ public class Servicio {
 
 	public Long getSer_cod() {
 		return ser_cod;
+	}
+
+	public String getSer_titulo() {
+		return ser_titulo;
+	}
+
+	public void setSer_titulo(String ser_titulo) {
+		this.ser_titulo = ser_titulo;
+	}
+
+	public String getSer_incluye() {
+		return ser_incluye;
+	}
+
+	public void setSer_incluye(String ser_incluye) {
+		this.ser_incluye = ser_incluye;
+	}
+
+	public String getSer_noincluye() {
+		return ser_noincluye;
+	}
+
+	public void setSer_noincluye(String ser_noincluye) {
+		this.ser_noincluye = ser_noincluye;
 	}
 
 	public void setSer_cod(Long ser_cod) {

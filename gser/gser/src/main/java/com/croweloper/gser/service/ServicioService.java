@@ -59,7 +59,7 @@ public class ServicioService implements IServicioService{
 	}
 
 	@Override
-	public Servicio registroServicio(Long codusu, int catsercod, String incluye, String noincluye,
+	public Servicio registroServicio(Long codusu, int catsercod,String titulo, String incluye, String noincluye,
 			String servadicionales, double preciominimo, String foto, String etiquetas) {
 		// TODO Auto-generated method stub
 		return null;

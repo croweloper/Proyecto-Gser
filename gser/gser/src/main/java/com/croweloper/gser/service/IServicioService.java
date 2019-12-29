@@ -22,7 +22,7 @@ public interface IServicioService {
 	
 	List<Servicio> ListaServiciosUsuario(Long idUsuario);
 		
-	Servicio registroServicio(Long codusu ,int catsercod ,String incluye ,String noincluye ,String servadicionales ,double preciominimo ,String foto ,String etiquetas);
+	Servicio registroServicio(Long codusu ,int catsercod,String titulo ,String incluye ,String noincluye ,String servadicionales ,double preciominimo ,String foto ,String etiquetas);
 	
 
 }
