@@ -43,7 +43,7 @@ call sp_RegistrarUsuario( 'Deivi', 'Herrera', 'obesotelees456',1, '42424362', '9
 -- 
 -- Servicios 
 --
-
+/*
 select * from servicio;
 
 call sp_ListarServiciosUsuario(?);
@@ -51,7 +51,7 @@ call sp_ListarServiciosUsuario(?);
 call sp_ListarServiciosCategoria(?);
 
 call sp_ListarServicios(?);
-
+*/
 
 -- sp_RegistrarServicio(?,?,?,?,?,?,?,?);
 
@@ -59,20 +59,20 @@ call sp_ListarServicios(?);
 drop procedure if exists sp_RegistrarServicio;
 
 delimiter &&
-create procedure sp_RegistrarServicio(in codusu bigint,in catsercod int,in incluye text,in noincluye text,in servadicionales text,in preciominimo decimal(5,2),in foto text,in etiquetas text)
+create procedure sp_RegistrarServicio(in codusu bigint,in catsercod int,in titulo varchar(100),in incluye text,in noincluye text,in servadicionales text,in preciominimo decimal(5,2),in foto text,in etiquetas text)
 begin
 
-INSERT INTO servicio (ser_codusu, ser_catsercod, ser_incluye, ser_noincluye, ser_servadicionales, serv_preciominimo, ser_foto, ser_etiquetas, ser_fecreg, ser_fecmod, ser_estado) 
-VALUES ( codusu, catsercod, incluye, noincluye, servadicionales, preciominimo, foto, etiquetas, now(), null, 1);
+INSERT INTO servicio (ser_codusu, ser_catsercod,ser_titulo, ser_incluye, ser_noincluye, ser_servadicionales, serv_preciominimo, ser_foto, ser_etiquetas, ser_fecreg, ser_fecmod, ser_estado) 
+VALUES ( codusu, catsercod,titulo, incluye, noincluye, servadicionales, preciominimo, foto, etiquetas, now(), null, 1);
 
 SELECT * FROM servicio WHERE ser_cod = (SELECT MAX(ser_cod) from servicio);
 
 end&&
 delimiter ;
 
-call sp_RegistrarServicio( 2, 1, 'Clases con Napa', 'no incluye lo que no incluye ps', 'nada adicional', 50.0, null, 'educacion,napa,pelao');
-call sp_RegistrarServicio( 3, 1, 'Clases con Ñol', null, null, 50.0, null, null);
-call sp_RegistrarServicio( 4, 1, 'Clases con el Cansiller Palpatin', null, null, 50.0, null, null);
+call sp_RegistrarServicio( 2, 1,'Clases de nivel Superior', 'Clases con Napa', 'no incluye lo que no incluye ps', 'nada adicional', 50.0, null, 'educacion,napa,pelao');
+call sp_RegistrarServicio( 3, 1,'Clases de nivel Superior', 'Clases con Ñol', null, null, 50.0, null, null);
+call sp_RegistrarServicio( 4, 1,'Clases de nivel Superior', 'Clases con el Cansiller Palpatin', null, null, 50.0, null, null);
 
 select * from servicio;
 	
