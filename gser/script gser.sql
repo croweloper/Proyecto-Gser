@@ -43,15 +43,6 @@ call sp_RegistrarUsuario( 'Deivi', 'Herrera', 'obesotelees456',1, '42424362', '9
 -- 
 -- Servicios 
 --
-/*
-select * from servicio;
-
-call sp_ListarServiciosUsuario(?);
-
-call sp_ListarServiciosCategoria(?);
-
-call sp_ListarServicios(?);
-*/
 
 -- sp_RegistrarServicio(?,?,?,?,?,?,?,?);
 
@@ -72,7 +63,53 @@ delimiter ;
 
 call sp_RegistrarServicio( 2, 1,'Clases de nivel Superior', 'Clases con Napa', 'no incluye lo que no incluye ps', 'nada adicional', 50.0, null, 'educacion,napa,pelao');
 call sp_RegistrarServicio( 3, 1,'Clases de nivel Superior', 'Clases con Ñol', null, null, 50.0, null, null);
-call sp_RegistrarServicio( 4, 1,'Clases de nivel Superior', 'Clases con el Cansiller Palpatin', null, null, 50.0, null, null);
+call sp_RegistrarServicio( 4, 2,'Clases de nivel Superior', 'Clases con el Cansiller Palpatin', null, null, 50.0, null, null);
+call sp_RegistrarServicio( 3, 2,'Clases de nivel Superior', 'Clases con el Cansiller Palpatin', null, null, 50.0, null, null);
+
+call sp_RegistrarServicio(?,?,?,?,?,?,?,?,?);
+--   sp_RegistrarServicio(?,?,?,?,?,?,?,?);
+
+
+-- call sp_ListarServiciosUsuario(?);
+
+
+
+drop procedure if exists sp_ListarServiciosUsuario;
+
+delimiter &&
+create procedure sp_ListarServiciosUsuario(in codusu bigint)
+begin
+
+select * from servicio where ser_codusu=codusu;
+
+end&&
+delimiter ;
+
+call sp_ListarServiciosUsuario(4);
+
+
+	
+
+-- call sp_ListarServiciosCategoria(?);
+
+drop procedure if exists sp_ListarServiciosCategoria;
+
+delimiter &&
+create procedure sp_ListarServiciosCategoria(in catser int)
+begin
+
+select * from servicio where ser_catsercod=catser;
+
+end&&
+delimiter ;
+
+call sp_ListarServiciosCategoria(2);
 
 select * from servicio;
-	
+
+
+
+call sp_ListarServiciosUsuario(4);
+call sp_ListarServiciosCategoria(2);
+
+

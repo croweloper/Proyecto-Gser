@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.croweloper.gser.model.Persona;
 import com.croweloper.gser.model.Servicio;
-import com.croweloper.gser.model.Usuario;
 import com.croweloper.gser.service.IServicioService;
 
 
@@ -35,8 +33,7 @@ public class ServicioController {
 		}
 		return new ResponseEntity<>(lista, HttpStatus.OK);
 		
-	}
-	
+	}	
 	
 	@GetMapping(value="listar/{id}")
 	public ResponseEntity<Servicio>  listarID(@PathVariable("id") Long id) throws IOException
@@ -49,4 +46,45 @@ public class ServicioController {
 		return new ResponseEntity<>(_p, HttpStatus.OK);		
 	}
 
+	/*
+	@GetMapping(value="listarcategorias/{id}")
+	public ResponseEntity<List<Servicio>>  listarCategoria(@PathVariable("id") Long id) throws IOException
+	{
+		List<Servicio> lista =service.ListarServiciosCategoria(id);  //null;
+		if(lista == null) {
+			lista = new ArrayList<>();
+			//throw new IOException("Error al listar");
+		}
+		return new ResponseEntity<>(lista, HttpStatus.OK);
+		
+	}
+	*/
+	
+	/*
+	@GetMapping(value="listarusuario/{id}")
+	public ResponseEntity<List<Servicio>>  listarUsuario(@PathVariable("id") Long id) throws IOException
+	{
+		List<Servicio> lista =service.ListaServiciosUsuario(id);  
+		if(lista == null) {
+			lista = new ArrayList<>();
+			//throw new IOException("Error al listar");
+		}
+		return new ResponseEntity<>(lista, HttpStatus.OK);
+		
+	}
+	*/
+	
+	@GetMapping(value="listarcat/{id}")
+	public ResponseEntity<List<Servicio>> listarxCat(@PathVariable("id") Long id) throws IOException
+	{
+		List<Servicio> lista =service.listarServicioXCat(id);  
+		if(lista == null) {
+			lista = new ArrayList<>();
+			//throw new IOException("Error al listar");
+		}
+		return new ResponseEntity<>(lista, HttpStatus.OK);
+		
+	}
+	
+	
 }
