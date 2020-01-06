@@ -25,7 +25,9 @@ public interface IServicioService {
 	*/
 		
 	Servicio registroServicio(Long codusu ,int catsercod,String titulo ,String incluye ,String noincluye ,String servadicionales ,double preciominimo ,String foto ,String etiquetas);
+	//call sp_RegistrarServicio(?,?,?,?,?,?,?,?,?);
 	
 	List<Servicio> listarServicioXCat(Long catid);
+	List<Servicio> listarServicioXUsu(Long usuid);
 
 }

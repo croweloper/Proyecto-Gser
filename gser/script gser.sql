@@ -108,8 +108,3 @@ call sp_ListarServiciosCategoria(2);
 select * from servicio;
 
 
-
-call sp_ListarServiciosUsuario(4);
-call sp_ListarServiciosCategoria(2);
-
-

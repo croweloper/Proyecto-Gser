@@ -9,8 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.croweloper.gser.model.Servicio;
 import com.croweloper.gser.service.IServicioService;
@@ -83,6 +86,31 @@ public class ServicioController {
 			//throw new IOException("Error al listar");
 		}
 		return new ResponseEntity<>(lista, HttpStatus.OK);
+		
+	}
+	
+	@GetMapping(value="listarusu/{id}")
+	public ResponseEntity<List<Servicio>> listarxUsu(@PathVariable("id") Long id) throws IOException
+	{
+		List<Servicio> lista =service.listarServicioXUsu(id);  
+		if(lista == null) {
+			lista = new ArrayList<>();
+			//throw new IOException("Error al listar");
+		}
+		return new ResponseEntity<>(lista, HttpStatus.OK);
+		
+	}
+	
+	@PostMapping(value="registrarServicio")
+	public ResponseEntity<Servicio> registrarServicio(@RequestBody Servicio s) throws IOException
+	{
+		Servicio servi=service.registroServicio(s.getSer_codusu(),Integer.parseInt(s.getSer_catsercod().toString()), s.getSer_titulo(), s.getSer_incluye(), s.getSer_noincluye(), s.getSer_servadicionales(), s.getServ_preciominimo(), s.getSer_foto(), s.getSer_etiquetas());
+		
+		if(servi == null) {
+			servi = new Servicio();			
+		}
+						
+		return new ResponseEntity<>(servi, HttpStatus.OK);
 		
 	}
 	

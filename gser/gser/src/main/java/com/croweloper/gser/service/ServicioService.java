@@ -1,14 +1,11 @@
 package com.croweloper.gser.service;
 
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.croweloper.gser.dao.IServicioDao;
-
 import com.croweloper.gser.model.Servicio;
 
 @Service
@@ -135,8 +132,19 @@ public class ServicioService implements IServicioService {
 	@Override
 	public Servicio registroServicio(Long codusu, int catsercod, String titulo, String incluye, String noincluye,
 			String servadicionales, double preciominimo, String foto, String etiquetas) {
-		// TODO Auto-generated method stub
-		return null;
+			
+		Servicio ser=new Servicio();
+		
+		List<Object[]> lista=servicioDAO.registrarServicio(codusu, catsercod, titulo, incluye, noincluye, servadicionales, preciominimo, foto, etiquetas) ;
+		
+		for (Object[] obj : lista) {
+			ser=new Servicio();
+			ser=listarId(Long.valueOf(obj[0].toString()));
+			
+		}
+		
+		return ser;
+		
 	}
 
 	@Override
@@ -155,5 +163,22 @@ public class ServicioService implements IServicioService {
 		// TODO Auto-generated method stub
 		return serviciocategoria;
 	}
+	
+	@Override
+	public List<Servicio> listarServicioXUsu(Long usuid) {
+
+		List<Servicio> serviciototal = servicioDAO.findAll();
+		List<Servicio> serviciousuario = new ArrayList<>();
+
+		for (Servicio servicio : serviciototal) {
+			if (servicio.getSer_codusu() == usuid) {
+				serviciousuario.add(servicio);
+			}
+		}
+		
+		
+		return serviciousuario;
+	}
+
 
 }
