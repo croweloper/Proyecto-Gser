@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.croweloper.gser.model.Contratacion;
 import com.croweloper.gser.model.Servicio;
 import com.croweloper.gser.service.IContratacionService;
+import com.croweloper.gser.service.IServicioService;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
@@ -31,6 +32,9 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 @RestController
 @RequestMapping("/contratacion")
 public class ContratacionController {
+	
+	@Autowired
+	private IServicioService servicioservice;
 	
 	@Autowired
 	private IContratacionService service;
@@ -73,8 +77,8 @@ public class ContratacionController {
 	}
 	
 	
-	@PostMapping(value="registrarServicio")
-	public ResponseEntity<Contratacion> registrarServicio(@RequestBody Contratacion s) throws IOException
+	@PostMapping(value="registrarcontratacion")
+	public ResponseEntity<Contratacion> registrarContratacion(@RequestBody Contratacion s) throws IOException
 	{
 		Contratacion servi=service.RegistrarContratacion(s.getCser_usucod(),s.getCser_sercod(),	s.getCser_datosfac(),s.getCser_tarjeta()); 
 		

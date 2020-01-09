@@ -127,5 +127,6 @@ SELECT * FROM contratacion_servicio WHERE cser_nrocontratacion = (SELECT MAX(cse
 end&&
 delimiter ;
 
-call sp_RegistrarContratacion(2,1,1,1)
+call sp_RegistrarContratacion(2,1,1,1);
 
+select * from contratacion_servicio;

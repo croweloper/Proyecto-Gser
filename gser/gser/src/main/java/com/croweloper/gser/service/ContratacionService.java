@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.croweloper.gser.dao.IContratacionDao;
+import com.croweloper.gser.dao.IServicioDao;
 import com.croweloper.gser.model.Contratacion;
 import com.croweloper.gser.model.Servicio;
 
@@ -16,6 +17,9 @@ public class ContratacionService implements IContratacionService{
 	
 	@Autowired
 	private IContratacionDao contratacionDAO;
+	
+	@Autowired
+	private IServicioDao servicioDAO;
 
 	@Override
 	public Contratacion registrar(Contratacion t) {
@@ -78,9 +82,9 @@ public class ContratacionService implements IContratacionService{
 				
 		for (Contratacion contratacion : listatotal) {
 			
-			ServicioService serv=new ServicioService();
 			
-			Servicio servprov=serv.listarId(contratacion.getCser_sercod());
+			
+			Servicio servprov=servicioDAO.findOne(contratacion.getCser_sercod());
 						
 			if (servprov.getSer_codusu()==codprestador) {
 				listaxprestador.add(contratacion);

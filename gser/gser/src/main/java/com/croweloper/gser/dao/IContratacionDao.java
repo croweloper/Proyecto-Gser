@@ -13,6 +13,4 @@ public interface IContratacionDao extends JpaRepository<Contratacion, Long> {
 	@Query(value = "call sp_RegistrarContratacion(?,?,?,?)", nativeQuery = true)
 	List<Object[]> registrarContratacion(Long cser_usucod ,Long cser_sercod ,Long cser_datosfac,Long cser_tarjeta );
 
-
-
 }
