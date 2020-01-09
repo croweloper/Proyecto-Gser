@@ -107,4 +107,25 @@ call sp_ListarServiciosCategoria(2);
 
 select * from servicio;
 
+-- 
+
+-- call sp_RegistrarContratacion(?,?,?,?)
+
+
+drop procedure if exists sp_RegistrarContratacion;
+
+delimiter &&
+create procedure sp_RegistrarContratacion(in usucod bigint,in sercod int,in datosfac int,in tarjeta int)
+begin
+
+INSERT INTO contratacion_servicio (cser_usucod, cser_sercod, cser_datosfac, cser_tarjeta, cser_codpago, cser_fecreg, cser_estado) 
+VALUES ( usucod, sercod, null, null, null, now(), 1);
+
+SELECT * FROM contratacion_servicio WHERE cser_nrocontratacion = (SELECT MAX(cser_nrocontratacion) from contratacion_servicio);
+
+
+end&&
+delimiter ;
+
+call sp_RegistrarContratacion(2,1,1,1)
 
