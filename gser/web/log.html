@@ -52,40 +52,73 @@
         //--- BEGIN BUTTON LOGIN ----------------------------------------------------
         $('body').on('click', '#btnLogin', function (e) {
 
-            var formToJSON =JSON.stringify({
-            "usu_mail": $.trim($("#usu_mail").val()),
-		    "usu_pass": $.trim($("#usu_pass").val())
-        });	
+            var formToJSON = JSON.stringify({
+                "usu_mail": $.trim($("#usu_mail").val()),
+                "usu_pass": $.trim($("#usu_pass").val())
 
-        console.log(formToJSON);
+            });
+            // let url = 'http://localhost:8087/serviciosglobalservices/usuario/usuarioLogin';
+            // //let url = `https://company.com/login?username=${params.username}&password=${params.password}`;
+            // const proxyurl = "https://crossorigin.me/";
+            // let req = new Request(proxyurl + url, {
+            //     method: 'POST',
+            //     headers: {
 
-           $.ajax({
-            type: "POST",
-            url: "http://localhost:8001/gser/usuario/usuarioLogin",
-            data: formToJSON,
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: true,
-            success: function (response) {                	
-                $(location).attr("href", "http://localhost:8001/gser/usuario/listar/1");
-           		if(response.rpta == true){
-           			$(location).attr("href", "http://localhost:8001/gser/usuario/listar/1");
-                    
-           		}else{
-           			//ShowMessage(response.message);
-           			//$(location).attr("href", "${pageContext.request.contextPath}/Portal/portalciudadano");
-                     //  $(location).attr("href", "https://google.com.pe");
-           			console.log("error");
-           		}
-            },
-            error:console.log(response)
+            //         //'Authentication': `Basic ${value.username}:${value.password}`,
+            //         'Content-Type': "application/json; charset=utf-8",
+            //         'mode': 'no-cors'
+
+            //     },
+            //     body: {
+            //         "usu_mail": "croweloper@gmail.com",
+            //         "usu_pass": "123456"
+            //     }
+            // });
+
+            // fetch(req)
+            //     .then(response => response.text())
+            //     .then((contents) => {
+            //         result = JSON.parse(contents);
+            //         console.log(JSON.parse(contents).data)
+            //         if (result.data) {
+            //             // do something
+            //         } else {
+            //             // do something
+            //         }
+            //     })
+            //     .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+
+
+
+            console.log(formToJSON);
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8087/serviciosglobalservices/usuario/usuarioLogin",
+                data: formToJSON,
+                crossDomain: true,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: true,
+                success: function (response) {
+                    //$(location).attr("href", "http://localhost:8002/gser/usuario/listar/1");
+                    if (response.rpta === true) {
+                        $(location).attr("href", "http://localhost:8087/serviciosglobalservices/usuario/listar/1");
+
+                    } else {
+                        //ShowMessage(response.message);
+                        //$(location).attr("href", "${pageContext.request.contextPath}/Portal/portalciudadano");
+                        //  $(location).attr("href", "https://google.com.pe");
+                        console.log("error");
+                    }
+                },
+                error: console.log("oli soy un error")
+            });
+
+
         });
 
 
-        });
-
-        
     </script>
 
 </body>

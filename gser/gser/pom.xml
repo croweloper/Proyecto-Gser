@@ -14,6 +14,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gser</name>
 	<description>Proyecto Idat Servicios Globales.</description>
+	
+	<packaging>war</packaging>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -48,6 +50,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>serviciosglobalservices</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
